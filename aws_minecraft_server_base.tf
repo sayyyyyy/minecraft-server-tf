@@ -1,3 +1,19 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+
+  required_version = ">= 1.2.0"
+}
+
+# Configure the AWS Provider
+provider "aws" {
+  region = "ap-northeast-1"
+}
+
 # VPC
 resource "aws_vpc" "minecraft_vpc" {
   cidr_block = "10.0.0.0/16"
@@ -89,20 +105,4 @@ resource "aws_iam_role" "minecraft_server_iam_role" {
   tags = {
     Name = "minecraft-server-iam-role"
   }
-}
-
-# Outputs
-output "public_subnet" {
-  description = "Public Subnet"
-  value       = aws_subnet.minecraft_subnet.id
-}
-
-output "security_group" {
-  description = "EC2 Security Group"
-  value       = aws_security_group.minecraft_sg.id
-}
-
-output "minecraft_server_iam_role" {
-  description = "Minecraft Server IAM Role"
-  value       = aws_iam_role.minecraft_server_iam_role.id
 }

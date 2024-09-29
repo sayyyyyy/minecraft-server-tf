@@ -16,15 +16,12 @@ variable "memory_size" {
 # IAM Instance Profile
 resource "aws_iam_instance_profile" "instance_profile" {
   name = "minecraft-server-instance-profile"
-
-  roles = [
-    aws_iam_role.minecraft-server-role.name
-  ]
+  role = aws_iam_role.minecraft_server_iam_role.name
 }
 
-# IAM Role (assuming you have imported the role elsewhere)
-data "aws_iam_role" "minecraft-server-role" {
-  name = "minecraft-server-role"
+resource "aws_network_interface" "minecraft_server_network_interface" {
+    subnet_id            = aws_subnet.minecraft_subnet.id
+    security_groups      = [aws_security_group.minecraft_sg.id]
 }
 
 # EC2 Instance
@@ -35,10 +32,8 @@ resource "aws_instance" "minecraft_instance" {
   iam_instance_profile = aws_iam_instance_profile.instance_profile.name
 
   network_interface {
+    network_interface_id = aws_network_interface.minecraft_server_network_interface.id
     device_index         = 0
-    associate_public_ip  = true
-    subnet_id            = var.minecraft_server_public_subnet_id
-    security_groups      = [var.minecraft_server_ec2_security_group_id]
   }
 
   user_data = <<-EOF
@@ -76,13 +71,4 @@ resource "aws_instance" "minecraft_instance" {
   tags = {
     Name = "minecraft-server-instance"
   }
-}
-
-# Replace variables with actual values for subnet and security group IDs
-variable "minecraft_server_public_subnet_id" {
-  description = "ID of the subnet where the Minecraft server will be deployed"
-}
-
-variable "minecraft_server_ec2_security_group_id" {
-  description = "ID of the security group for the Minecraft server EC2 instance"
 }
