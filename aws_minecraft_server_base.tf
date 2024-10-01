@@ -37,6 +37,7 @@ resource "aws_subnet" "minecraft_subnet" {
   vpc_id            = aws_vpc.minecraft_vpc.id
   cidr_block        = "10.0.0.0/16"
   availability_zone = "ap-northeast-1a"
+  map_public_ip_on_launch = true
 
   tags = {
     Name = "minecraft-server-subnet"
