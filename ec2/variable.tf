@@ -11,3 +11,14 @@ variable "memory_size" {
   default = "1300M"
   description = "Server Memory Size"
 }
+
+variable "ami" {
+  default = "ami-0134b2a3fc637be47"
+  description = "ec2 instance ami"
+}
+
+variable "subnet_id" {}
+
+variable "sg_id" {}
+
+variable "ssm_role" {}

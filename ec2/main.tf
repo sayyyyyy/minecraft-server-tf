@@ -1,17 +1,17 @@
 # IAM Instance Profile
 resource "aws_iam_instance_profile" "instance_profile" {
   name = "minecraft-server-instance-profile"
-  role = aws_iam_role.minecraft_server_iam_role.name
+  role = var.ssm_role
 }
 
 resource "aws_network_interface" "minecraft_server_network_interface" {
-    subnet_id            = aws_subnet.minecraft_subnet.id
-    security_groups      = [aws_security_group.minecraft_sg.id]
+    subnet_id            = var.subnet_id
+    security_groups      = [var.sg_id]
 }
 
 # EC2 Instance
 resource "aws_instance" "minecraft_instance" {
-  ami           = "ami-0ad215c298e692194"
+  ami           = var.ami
   instance_type = "t4g.small"
 
   iam_instance_profile = aws_iam_instance_profile.instance_profile.name
