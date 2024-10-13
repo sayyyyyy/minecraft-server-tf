@@ -13,7 +13,7 @@ variable "memory_size" {
 }
 
 variable "ami" {
-  default = "ami-0134b2a3fc637be47"
+  default = "ami-0ad215c298e692194"
   description = "ec2 instance ami"
 }
 
