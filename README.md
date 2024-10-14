@@ -1,6 +1,6 @@
 # minecraft-server-tf
 ## 概要
-Minecraftマルチサーバーを作成するTerraFormソースコード群
+Minecraftマルチサーバーを作成するTerraformソースコード群
 
 ## 作成するリソース
 ### Base
@@ -22,7 +22,7 @@ Minecraftマルチサーバーを作成するTerraFormソースコード群
 
 1. [こちら](https://mcversions.net/)のサイトで遊びたいバージョンのサーバーのダウンロードリンクを取得する
     - バージョンを選択し、Download Server jarを右クリックしてリンクをコピーする
-2. TerraFormをインストールする
+2. Terraformをインストールする
 3. 環境変数を設定する
     - AWSの認証に必要なアクセスキーなど
 4. terraform init を実行する
