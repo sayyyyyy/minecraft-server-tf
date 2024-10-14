@@ -4,9 +4,10 @@ resource "aws_iam_instance_profile" "instance_profile" {
   role = var.ssm_role
 }
 
+# Network Interface
 resource "aws_network_interface" "minecraft_server_network_interface" {
-    subnet_id            = var.subnet_id
-    security_groups      = [var.sg_id]
+  subnet_id            = var.subnet_id
+  security_groups      = [var.sg_id]
 }
 
 # EC2 Instance

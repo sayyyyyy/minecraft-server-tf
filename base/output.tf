@@ -1,4 +1,3 @@
-# Outputs
 output "public_subnet" {
   description = "Public Subnet"
   value       = aws_subnet.minecraft_subnet.id

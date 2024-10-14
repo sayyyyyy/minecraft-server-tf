@@ -37,7 +37,7 @@ resource "aws_route_table" "minecraft_rt" {
   }
 }
 
-# Route to the Internet (0.0.0.0/0)
+# Route to the Internet
 resource "aws_route" "minecraft_internet_route" {
   route_table_id         = aws_route_table.minecraft_rt.id
   destination_cidr_block = "0.0.0.0/0"
@@ -75,7 +75,7 @@ resource "aws_security_group" "minecraft_sg" {
   }
 }
 
-# IAM Role for EC2 (Minecraft Server Access Role)
+# IAM Role for EC2
 resource "aws_iam_role" "minecraft_server_iam_role" {
   name = "minecraft-server-iam-role"
 

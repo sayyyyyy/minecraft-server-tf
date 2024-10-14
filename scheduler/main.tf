@@ -1,4 +1,4 @@
-# IAM Role for AWS Scheduler
+# IAM Role
 resource "aws_iam_role" "scheduler_ec2_stop_role" {
   name = "minecraft-server-scheduler-stop-role"
 

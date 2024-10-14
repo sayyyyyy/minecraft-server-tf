@@ -14,7 +14,7 @@ variable "memory_size" {
 
 variable "ami" {
   default = "ami-0ad215c298e692194"
-  description = "ec2 instance ami"
+  description = "EC2 Instance AMI"
 }
 
 variable "subnet_id" {}
